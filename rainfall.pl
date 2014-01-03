@@ -3,19 +3,19 @@ use strict;
 use warnings; 
 
 use Cell;
-use Rainfall;
+use Topology;
 
 { # Tests
   use Test::More tests => 4; 
 
   { # 3x3 field 
-    my $r = Rainfall->new( rows  => 3,
+    my $topology = Topology->new( rows  => 3,
                            cols  => 3,
                            field => [ [1, 5, 2], 
                                       [2, 4, 7], 
                                       [3, 6, 9] ]);
 
-    my %basin = $r->basins;
+    my %basin = $topology->basins;
     is_deeply( 
         [sort { $b <=> $a } values %basin],
         [7, 2],
@@ -24,11 +24,11 @@ use Rainfall;
   }
 
   { # 1x1 field
-    my $r = Rainfall->new( rows  => 1,
+    my $topology = Topology->new( rows  => 1,
                            cols  => 1,
                            field => [ [1] ]);
 
-    my %basin = $r->basins;
+    my %basin = $topology->basins;
     is_deeply( 
         [sort { $b <=> $a } values %basin],
         [1],
@@ -37,7 +37,7 @@ use Rainfall;
   }
 
   { # 5x5 field
-    my $r = Rainfall->new( rows  => 5,
+    my $topology = Topology->new( rows  => 5,
                            cols  => 5,
                            field => [ [1, 0, 2, 5, 8],
                                       [2, 3, 4, 7, 9],
@@ -45,7 +45,7 @@ use Rainfall;
                                       [1, 2, 5, 4, 3],
                                       [3, 3, 5, 2, 1] ]);
 
-    my %basin = $r->basins;
+    my %basin = $topology->basins;
     is_deeply( 
         [sort { $b <=> $a } values %basin],
         [11, 7, 7],
@@ -54,14 +54,14 @@ use Rainfall;
   }
 
   { # Test 4x4 field
-    my $r = Rainfall->new( rows  => 4,
+    my $topology = Topology->new( rows  => 4,
                            cols  => 4,
                            field => [ [0, 2, 1, 3],
                                       [2, 1, 0, 4],
                                       [3, 3, 3, 3],
                                       [5, 5, 2, 1] ]);
 
-    my %basin = $r->basins;
+    my %basin = $topology->basins;
     is_deeply( 
         [sort { $b <=> $a } values %basin],
         [7, 5, 4],
