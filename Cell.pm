@@ -77,12 +77,6 @@ package Cell {
     return $size;
   }
 
-  # string representation of a Cell
-  use overload '""' => sub {  
-    my ($self) = @_;
-    return "(" . $self->x . "," . $self->y . ") = " . $self->elevation;
-  };
-
   # returns the neighbors that flow into this Cell
   sub get_flowing_neighbors {
     my ($self) = @_;
@@ -91,7 +85,7 @@ package Cell {
     # iff this cell's elevation is less than their neighbors
     # AND the neighboring cell has no other neighbors (that are not this cell) that have a lower (or equal) elevation 
     return  grep {  
-              !$_->is_sink && $self->elevation == $_->lowest_neighbor->elevation
+              !$_->is_sink && $self == $_->lowest_neighbor
             } $self->neighbors;
   }
 
