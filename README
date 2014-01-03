@@ -1,15 +1,13 @@
 Rainfall problem: 
 
-
-   
-
 About a year ago when I was applying to jobs for the first time, I had an
 interview at a company and they posed the following problem to me, which I
 preceded to bomb.
 
-A year later I actually came up with a solution to the problem, and I couldn't
-be happier. However, I would love for some critiques as to the design of my
-solution or other feedback about: style, OOP practices, etc..
+A year later I went back and came up with a solution, I think this is a good
+indicator of my progress in the past year. After some help from
+codereview.stackexchange.com/questions/38500/rainfall-problem I am really
+happy with the soltuion.
 
 Problem Statement
 
